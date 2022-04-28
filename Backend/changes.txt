@@ -1,0 +1,5 @@
+ const res = this.getReservationsForDay(iterator, props);
+            if (res) {
+                reservations = res;
+            }
+            iterator.addDays(1);

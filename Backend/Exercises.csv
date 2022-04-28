@@ -1,0 +1,50 @@
+Exercise,Type,Intensity,Unit,Muscle Group
+RFESS iso,leg-isometric,0.80,reps,leg
+RFESS oscillating,leg-concentric,0.80,seconds,leg
+RFESS,leg-eccentric,0.90,reps,leg
+Squats,leg-concentric,0.80,reps,leg
+Box stepdown,leg-eccentric,0.70,reps,leg
+Shoulder bridge march,leg-isometric,0.50,reps,glutes
+lateral bound,movement,0.30,reps,na
+Hamstring isometrics,leg-isometric,0.50,reps,hamstring
+Hamstring slider,leg-eccentric,0.65,reps,hamstring
+Ankle burnouts,leg-plyo,0.30,seconds,na
+Box jump,leg-plyo,0.30,reps,na
+Triple hurdles,leg-plyo,0.50,rounds,na
+Depth jump,leg-plyo,0.60,reps,na
+High depth jump,leg-plyo,0.90,reps,na
+Eccentric nordic,leg-eccentric,0.70,reps,hamstring
+Nordic curls,leg-eccentric,0.85,reps,hamstring
+Reverse nordics,leg-eccentric,0.70,reps,leg
+Triangle bound,movement,0.40,reps,na
+Airplane,movement,0.30,reps,na
+2 leg bound,leg-plyo,0.40,rounds,na
+1 leg bound,leg-plyo,0.70,rounds,na
+Sprints,leg-plyo,0.90,rounds,na
+Ankle hurdle,leg-plyo,0.60,rounds,na
+Rocking deadbug,Core,0.65,reps,core
+Leg climb,Core,0.65,reps,core
+Reverse crunch,Core,0.50,reps,core
+Rocking plank,Core,0.50,seconds,core
+Side plank,Core,0.50,seconds,core
+Leg kicks,Flexibility,0.20,reps,na
+90/90,Flexibility,0.20,reps,na
+Hip flexor CAR,Flexibility,0.20,reps,na
+Angels,Flexibility,0.20,seconds,na
+Bird-dog,Core,0.30,reps,na
+Inner thigh stretch,Flexibility,0.20,reps,na
+Reach through,Flexibility,0.20,reps,na
+Band Assisted stretch,Flexibility,0.20,reps,na
+RDL,leg-eccentric,0.70,reps,hamstring
+Full ROM RDL,leg-eccentric,0.80,reps,hamstring
+Power clean,leg-concentric,0.80,reps,olympic
+Hang Power clean,leg-concentric,0.80,reps,olympic
+Hang High pull,leg-concentric,0.80,reps,olympic
+High pull,leg-concentric,0.80,reps,olympic
+Hang overload,leg-concentric,0.90,reps,olympic
+Reverse plank,leg-isometric,0.50,seconds,glutes
+Hip flexor drives,leg-concentric,0.40,reps,glutes
+single leg iso bridge,leg-isometric,0.65,seconds,glutes
+crossover step,leg-plyo,0.40,reps,na
+pogo hops,leg-plyo,0.40,reps,na
+Split Squat,leg-concentric,0.70,reps,leg
