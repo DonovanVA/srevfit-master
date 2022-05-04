@@ -1,21 +1,10 @@
 import { StyleSheet,View, Text,Button,SafeAreaView,TouchableOpacity,FlatList } from 'react-native'
 import React from 'react'
-import { useEffect,useState } from 'react'
 import { ScrollView } from 'react-native'
-export default function Exercises() {
+export default function Exercises({exercises}) {
 
-  const [Exercises,setExercises] = useState([])
-  useEffect(()=>{
-    fetchExercises()
-  },[])
-
-    const fetchExercises = async()=>{
-      const response = await fetch("http://localhost:5001/exercises")
-      const data = await response.json()
-      setExercises(data)
-      console.log(data)
-    }
-
+  
+  
 
   
   return (
@@ -27,7 +16,7 @@ export default function Exercises() {
       <Text style ={styles.header}>Execises:</Text>
       
       <ScrollView>
-      <FlatList data = {Exercises} keyExtractor={item => item.exercise}renderItem={ITEMDATA =>(
+      <FlatList data = {exercises} keyExtractor={item => item.exercise}renderItem={ITEMDATA =>(
         <Text>{ITEMDATA.item.exercise}</Text>)}/>
       </ScrollView>
       

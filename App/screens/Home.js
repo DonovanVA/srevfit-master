@@ -1,14 +1,14 @@
 import { View, Text,StyleSheet,FlatList } from 'react-native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native-web'
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
-import { ScreenStackHeaderLeftView } from 'react-native-screens';
+
 import {Calendar, CalendarList, Agenda, CalendarProvider} from 'react-native-calendars'
 
 import { useState } from 'react';
 // the render functions will render the item
-export default function Home({data}) {
+export default function Home({datas}) {
   const navigation=useNavigation()
   const Stack = createNativeStackNavigator()
   
@@ -72,7 +72,7 @@ export default function Home({data}) {
     
     ////////////////1. Clickable dates-set limits to list//////////////
     //////////////////////////////////////////////////////////////////////
-    items ={data}
+    items ={datas}
     minDate={Start.first}
     maxDate={Start.end}
     

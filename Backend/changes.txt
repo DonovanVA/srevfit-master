@@ -1,5 +1,9 @@
- const res = this.getReservationsForDay(iterator, props);
+ In node-modules/react-native-calendars/src/reservation-list/agenda/reservation-list/index.ts:
+
+///Line 133 -- for loop with 31 iterations
+const res = this.getReservationsForDay(iterator, props);
             if (res) {
                 reservations = res;
             }
             iterator.addDays(1);
+///Line 139

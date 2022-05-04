@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-web';
 import {TailwindProvider, useTailwind} from 'tailwind-rn';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -11,10 +10,11 @@ import Exercises from './screens/Exercises';
 import Home from './screens/Home';
 import Tools from './screens/Tools';
 import Community from './screens/Community';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import UserContext from './Loginscreens/AccountContext';
 
 // dummy workout data
-const data={
+const datas={
   '2022-04-18': [{"Exercise":"Triangle bound","Type":"movement","Intensity":0.4,"Unit":"reps","Muscle Group":"na"},{"Exercise":"lateral bound","Type":"movement","Intensity":0.3,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Airplane","Type":"movement","Intensity":0.3,"Unit":"reps","Muscle Group":"na"},{"Exercise":"pogo hops","Type":"leg-plyo","Intensity":0.4,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Box jump","Type":"leg-plyo","Intensity":0.3,"Unit":"reps","Muscle Group":"na"},{"Exercise":"RFESS iso","Type":"leg-isometric","Intensity":0.8,"Unit":"reps","Muscle Group":"leg"},{"Exercise":"Shoulder bridge march","Type":"leg-isometric","Intensity":0.5,"Unit":"reps","Muscle Group":"glutes"}],
   '2022-04-19': [{"Exercise":"Leg climb","Type":"Core","Intensity":0.65,"Unit":"reps","Muscle Group":"core"},{"Exercise":"Rocking deadbug","Type":"Core","Intensity":0.65,"Unit":"reps","Muscle Group":"core"},{"Exercise":"Hip flexor CAR","Type":"Flexibility","Intensity":0.2,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Angels","Type":"Flexibility","Intensity":0.2,"Unit":"seconds","Muscle Group":"na"},{"Exercise":"Leg kicks","Type":"Flexibility","Intensity":0.2,"Unit":"reps","Muscle Group":"na"},{"Exercise":"90\/90","Type":"Flexibility","Intensity":0.2,"Unit":"reps","Muscle Group":"na"}],
   '2022-04-20': [{"Exercise":"lateral bound","Type":"movement","Intensity":0.3,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Airplane","Type":"movement","Intensity":0.3,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Triangle bound","Type":"movement","Intensity":0.4,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Box jump","Type":"leg-plyo","Intensity":0.3,"Unit":"reps","Muscle Group":"na"},{"Exercise":"crossover step","Type":"leg-plyo","Intensity":0.4,"Unit":"reps","Muscle Group":"na"},{"Exercise":"Depth jump","Type":"leg-plyo","Intensity":0.6,"Unit":"reps","Muscle Group":"na"}],
@@ -31,11 +31,36 @@ export default function App() {
   const tailwind = useTailwind();
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
-  
+  const [exercises,setExercises] = useState([])
+  const [accdetails,setAccdetails]=useState([])
+  useEffect(()=>{
+    fetchExercises()
+  },[])
+
+    const fetchExercises = async()=>{
+      const response = await fetch("http://localhost:5001/exercises")
+      const data = await response.json()
+      setExercises(data)
+      
+    }
+
+
+  useEffect(()=>{
+    fetchAccdetails()
+  },[])
+
+    const fetchAccdetails = async()=>{
+      const response = await fetch("http://localhost:5002/users")
+      const info = await response.json()
+      setAccdetails(info)
+      console.log(info)
+    }
+
 
 
   return (
     <NavigationContainer>
+    
       <Tab.Navigator
       initialRouteName={'Home'}
       screenOptions={({route})=>({
@@ -81,9 +106,9 @@ export default function App() {
       
       <Tab.Screen options={{headerShown: false}} name ='Tools' children={()=><Tools></Tools>}></Tab.Screen>
       <Tab.Screen options={{headerShown: false}} name ='Community' children={()=><Community></Community>}></Tab.Screen>
-      <Tab.Screen options={{headerShown: false}} name ='Home' children={()=><Home data ={data}></Home>}></Tab.Screen>
-      <Tab.Screen options={{headerShown: false}} name ='Exercises' children={()=><Exercises></Exercises>}></Tab.Screen>
-      <Tab.Screen options={{headerShown: false}} name ='Profile' children={()=><Profile></Profile>}></Tab.Screen>
+      <Tab.Screen options={{headerShown: false}} name ='Home' children={()=><Home data ={datas}></Home>}></Tab.Screen>
+      <Tab.Screen options={{headerShown: false}} name ='Exercises' children={()=><Exercises exercises={exercises}></Exercises>}></Tab.Screen>
+      <Tab.Screen options={{headerShown: false}} name ='Profile' children={()=><Profile accdetails={accdetails}></Profile>}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
     

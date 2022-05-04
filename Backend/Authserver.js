@@ -1,16 +1,10 @@
 const express = require("express")
-const {Client} = require("pg")
+const bodyParser = require('body-parser')
+const db=require('./AuthQueries')
 const app = express()
-const db = require('./ServerQueries')
 require("dotenv").config()
-const client = new Client({
-    user :process.env.DB_USER,
-    password:process.env.DB_PASSWORD,
-    host:process.env.DB_HOST,
-    port:process.env.DB_PORT,
-    database:process.env.DB_DATABASE
-})
 
+app.use(bodyParser.json())
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin","http://localhost:19006");
     res.header("Access-Control-Allow-Credentials",true);
@@ -22,11 +16,10 @@ app.use((req,res,next)=>{
     next();
 });
 app.use(express.json());
-app.use(express.urlencoded({extended:false}));
-
+app.use(express.urlencoded({extended:true}));
+//queries
 db.connect();
-
-//Queries
-app.get("/exercises",db.getexercises)
-//Queries
-app.listen(5001,()=>console.log("listening on port 5001"))
+app.get("/users",db.getusers)
+app.post('/store',db.signupuser)
+//
+app.listen(5002,()=>console.log("listening on port 5002"))
